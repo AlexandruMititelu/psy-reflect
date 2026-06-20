@@ -23,6 +23,13 @@ export const nav = [
   { href: "/#contact", label: "Contact" },
 ] as const;
 
+// Current campaign/event — surfaced as a highlighted button in the header.
+// Point `href` at the live event page; update when a new event goes up.
+export const currentEvent = {
+  href: "/eveniment-22iunie26",
+  label: "Eveniment",
+} as const;
+
 export const services = [
   {
     index: "01",

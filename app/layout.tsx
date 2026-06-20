@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, IBM_Plex_Mono } from "next/font/google";
+import { Grain } from "./components/Grain";
 import "./globals.css";
 
 const inter = Inter({
@@ -47,7 +48,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ro" className={`${inter.variable} ${plexMono.variable}`}>
-      <body>{children}</body>
+      <body>
+        <Grain />
+        {children}
+      </body>
     </html>
   );
 }

@@ -1,27 +1,38 @@
 // Decorative convex ("barrel") grid — lines bow gently away from center so the
-// grid reads as a soft dome rather than a flat technical mesh. Pure ornament.
-const VERTICAL = [
-  "M20 0 Q6 120 20 240",
-  "M60 0 Q51.6 120 60 240",
-  "M100 0 Q97.2 120 100 240",
-  "M140 0 Q142.8 120 140 240",
-  "M180 0 Q188.4 120 180 240",
-  "M220 0 Q234 120 220 240",
-];
+// grid reads as a soft dome rather than a flat technical mesh. Rectangular
+// cells (wider than tall); `slice` makes it cover whatever box it's dropped in,
+// so it can sit full-bleed behind a section or framed in a corner. Pure ornament.
+const W = 360;
+const H = 240;
+const CX = W / 2;
+const CY = H / 2;
+const BOW = 0.12; // how far each line bulges from the center axis
+const STEP_X = 36; // horizontal spacing — larger than STEP_Y ⇒ rectangular cells
+const STEP_Y = 24; // vertical spacing
 
-const HORIZONTAL = [
-  "M0 20 Q120 6 240 20",
-  "M0 60 Q120 51.6 240 60",
-  "M0 100 Q120 97.2 240 100",
-  "M0 140 Q120 142.8 240 140",
-  "M0 180 Q120 188.4 240 180",
-  "M0 220 Q120 234 240 220",
-];
+// A line's control point bulges outward in proportion to its distance from the
+// matching center axis, so the further out a line is, the more it bows.
+const bowX = (x: number) => x + BOW * (x - CX);
+const bowY = (y: number) => y + BOW * (y - CY);
+
+const PATHS: string[] = [];
+for (let x = STEP_X; x < W; x += STEP_X) {
+  PATHS.push(`M${x} 0 Q${bowX(x)} ${CY} ${x} ${H}`); // vertical line
+}
+for (let y = STEP_Y; y < H; y += STEP_Y) {
+  PATHS.push(`M0 ${y} Q${CX} ${bowY(y)} ${W} ${y}`); // horizontal line
+}
 
 export function CurvedGrid({ className = "" }: { className?: string }) {
   return (
-    <svg viewBox="0 0 240 240" fill="none" aria-hidden className={className}>
-      {[...VERTICAL, ...HORIZONTAL].map((d, i) => (
+    <svg
+      viewBox={`0 0 ${W} ${H}`}
+      fill="none"
+      aria-hidden
+      preserveAspectRatio="xMidYMid slice"
+      className={className}
+    >
+      {PATHS.map((d, i) => (
         <path
           key={i}
           d={d}

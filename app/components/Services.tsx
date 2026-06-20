@@ -1,4 +1,4 @@
-import { SectionLabel } from "./SectionLabel";
+import { SectionHeader } from "./SectionHeader";
 import { CurvedGrid } from "./CurvedGrid";
 import { services } from "@/app/lib/site";
 
@@ -6,18 +6,12 @@ export function Services() {
   return (
     <section id="servicii" className="scroll-mt-16 border-b border-line">
       <div className="shell py-20 md:py-32">
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-12">
-          <div className="md:col-span-6">
-            <SectionLabel index="01">Servicii</SectionLabel>
-            <h2 className="mt-6 text-balance text-3xl font-semibold tracking-tight md:text-5xl">
-              Două servicii. Făcute temeinic.
-            </h2>
-          </div>
-          <p className="text-base leading-relaxed text-ink-soft md:col-span-5 md:col-start-8 md:self-end md:text-lg">
-            Nu facem de toate. Facem două lucruri bine: te ajutăm să te simți
-            mai bine și îți dăm răspunsuri clare despre tine.
-          </p>
-        </div>
+        <SectionHeader
+          index="01"
+          label="Servicii"
+          title="Două servicii. Făcute temeinic."
+          lede="Nu facem de toate. Facem două lucruri bine: te ajutăm să te simți mai bine și îți dăm răspunsuri clare despre tine."
+        />
 
         <div className="mt-14 space-y-5 md:mt-20">
           {services.map((s) => (

@@ -1,14 +1,15 @@
-import { SectionLabel } from "./SectionLabel";
+import { SectionHeader } from "./SectionHeader";
 import { steps } from "@/app/lib/site";
 
 export function Process() {
   return (
     <section id="proces" className="scroll-mt-16 border-b border-line">
       <div className="shell py-20 md:py-32">
-        <SectionLabel index="02">Cum lucrăm</SectionLabel>
-        <h2 className="mt-6 max-w-[14ch] text-balance text-3xl font-semibold tracking-tight md:text-5xl">
-          Simplu. În trei pași.
-        </h2>
+        <SectionHeader
+          index="02"
+          label="Cum lucrăm"
+          title="Simplu. În trei pași."
+        />
 
         <div className="mt-14 grid grid-cols-1 md:mt-20 md:grid-cols-3 md:gap-8">
           {steps.map((st) => (

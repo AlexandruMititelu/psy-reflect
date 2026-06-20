@@ -1,14 +1,22 @@
 import { SectionLabel } from "./SectionLabel";
+import { CurvedGrid } from "./CurvedGrid";
 import { site } from "@/app/lib/site";
 
 export function Contact() {
   return (
-    <section id="contact" className="scroll-mt-16 border-b border-line">
-      <div className="shell py-20 md:py-32">
-        <div className="grid grid-cols-1 gap-12 md:grid-cols-12 md:gap-6">
+    <section
+      id="contact"
+      className="relative overflow-hidden scroll-mt-16 border-b border-line"
+    >
+      <CurvedGrid className="pointer-events-none absolute inset-0 size-full text-accent/[0.10]" />
+      <div className="shell relative py-20 md:py-32">
+        <header className="border-t border-ink pt-4 md:pt-5">
+          <SectionLabel index="04">Contact</SectionLabel>
+        </header>
+
+        <div className="mt-8 grid grid-cols-1 gap-12 md:mt-12 md:grid-cols-12 md:gap-6">
           <div className="md:col-span-7">
-            <SectionLabel index="04">Contact</SectionLabel>
-            <h2 className="mt-6 max-w-[15ch] text-balance text-3xl font-semibold leading-[1.02] tracking-tight md:text-6xl">
+            <h2 className="max-w-[18ch] text-balance text-4xl font-semibold leading-[1.04] tracking-[-0.02em] md:text-5xl">
               Primul pas e cel mai greu. Hai să-l facem împreună.
             </h2>
             <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-4">

@@ -1,10 +1,12 @@
 import { SectionLabel } from "./SectionLabel";
+import { CurvedGrid } from "./CurvedGrid";
 import { site } from "@/app/lib/site";
 
 export function Hero() {
   return (
-    <section id="top" className="border-b border-line">
-      <div className="shell py-20 md:py-32">
+    <section id="top" className="relative overflow-hidden border-b border-line">
+      <CurvedGrid className="pointer-events-none absolute inset-0 size-full text-accent/[0.10]" />
+      <div className="shell relative py-20 md:py-32">
         <SectionLabel index="00">
           {site.tagline} · {site.city}
         </SectionLabel>
